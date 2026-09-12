@@ -1,0 +1,85 @@
+name: Poka-Yoke Fail-Closed Build Gate
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+concurrency:
+  group: staging-build-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fail-closed-gate:
+    name: formatting-security-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Detect raw hardcoded API secrets
+        run: python security/scan_secrets.py --paths . --quarantine-dir quarantine
+
+      - name: Quarantine rejected build evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarantined-build-${{ github.run_id }}
+          path: quarantine/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Stop after secret failure
+        if: failure()
+        run: exit 1
+
+      - name: Set up Terraform
+        if: success()
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.5"
+
+      - name: Check Terraform formatting
+        if: success()
+        working-directory: infra
+        run: terraform fmt -check -recursive
+
+      - name: Validate Terraform structure
+        if: success()
+        working-directory: infra
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+      - name: Check Python formatting
+        if: success()
+        run: black --check backend security
+
+      - name: Lint Python
+        if: success()
+        run: ruff check backend security
+
+      - name: Run security static analysis
+        if: success()
+        run: bandit -r backend security -x backend/tests,security/tests
+
+      - name: Run serializer and scanner tests
+        if: success()
+        run: pytest
+

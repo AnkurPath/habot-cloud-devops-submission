@@ -1,0 +1,17 @@
+[
+  {"name": "submission_id", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "student_external_id", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "child_first_name", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "date_of_birth", "type": "DATE", "mode": "REQUIRED"},
+  {"name": "parent_email", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "parent_phone_e164", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "primary_learning_need", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "support_plan_requested", "type": "BOOLEAN", "mode": "REQUIRED"},
+  {"name": "school_authorization_confirmed", "type": "BOOLEAN", "mode": "REQUIRED"},
+  {"name": "parent_guardian_consent", "type": "BOOLEAN", "mode": "REQUIRED"},
+  {"name": "analytics_consent", "type": "BOOLEAN", "mode": "REQUIRED"},
+  {"name": "emergency_contact_available", "type": "BOOLEAN", "mode": "REQUIRED"},
+  {"name": "pii_access_tier", "type": "STRING", "mode": "REQUIRED"},
+  {"name": "dcyn_flags", "type": "JSON", "mode": "REQUIRED"},
+  {"name": "created_at", "type": "TIMESTAMP", "mode": "REQUIRED"}
+]

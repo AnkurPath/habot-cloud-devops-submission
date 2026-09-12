@@ -1,0 +1,7 @@
+DCYN Code,Full Form Question,Incoming Payload Field,Accepted Value Type,Hard Stop When False,BigQuery Field,Validation Owner
+DCYN_001,Does the record include verified parent or guardian consent?,parent_guardian_consent,Boolean Yes or No,Yes,parent_guardian_consent,Django REST Framework serializer
+DCYN_002,Does the record include a requested learning support plan?,support_plan_requested,Boolean Yes or No,No,support_plan_requested,Django REST Framework serializer
+DCYN_003,Does the school authorization gate pass?,school_authorization_confirmed,Boolean Yes or No,Yes,school_authorization_confirmed,Django REST Framework serializer
+DCYN_004,Does the record include an emergency contact?,emergency_contact_available,Boolean Yes or No,Yes,emergency_contact_available,Django REST Framework serializer
+DCYN_005,Does the parent or guardian allow analytics use?,analytics_consent,Boolean Yes or No,No,analytics_consent,Django REST Framework serializer
+

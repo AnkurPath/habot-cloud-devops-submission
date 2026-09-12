@@ -1,0 +1,16 @@
+{
+  "submission_id": "8adf0b3c-40cf-4dfd-9d8c-70a6564e5ef3",
+  "student_external_id": "STUDENT-2026-0001",
+  "child_first_name": "Aarav",
+  "date_of_birth": "2014-05-20",
+  "parent_email": "parent@example.com",
+  "parent_phone_e164": "+971501234567",
+  "primary_learning_need": "dyslexia",
+  "support_plan_requested": true,
+  "school_authorization_confirmed": true,
+  "parent_guardian_consent": true,
+  "analytics_consent": true,
+  "emergency_contact_available": true,
+  "pii_access_tier": "standard"
+}
+

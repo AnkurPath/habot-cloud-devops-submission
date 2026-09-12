@@ -1,0 +1,43 @@
+[
+  {
+    "code": "DCYN_001",
+    "question": "Does the record include verified parent or guardian consent?",
+    "payload_field": "parent_guardian_consent",
+    "accepted_values": ["true", "false"],
+    "hard_stop_when_false": true,
+    "bigquery_field": "parent_guardian_consent"
+  },
+  {
+    "code": "DCYN_002",
+    "question": "Does the record include a requested learning support plan?",
+    "payload_field": "support_plan_requested",
+    "accepted_values": ["true", "false"],
+    "hard_stop_when_false": false,
+    "bigquery_field": "support_plan_requested"
+  },
+  {
+    "code": "DCYN_003",
+    "question": "Does the school authorization gate pass?",
+    "payload_field": "school_authorization_confirmed",
+    "accepted_values": ["true", "false"],
+    "hard_stop_when_false": true,
+    "bigquery_field": "school_authorization_confirmed"
+  },
+  {
+    "code": "DCYN_004",
+    "question": "Does the record include an emergency contact?",
+    "payload_field": "emergency_contact_available",
+    "accepted_values": ["true", "false"],
+    "hard_stop_when_false": true,
+    "bigquery_field": "emergency_contact_available"
+  },
+  {
+    "code": "DCYN_005",
+    "question": "Does the parent or guardian allow analytics use?",
+    "payload_field": "analytics_consent",
+    "accepted_values": ["true", "false"],
+    "hard_stop_when_false": false,
+    "bigquery_field": "analytics_consent"
+  }
+]
+
